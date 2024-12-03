@@ -129,7 +129,6 @@
 
 .mobile-nav {
   .nav__list {
-
     .nav__item {
       display: block;
       margin-bottom: 36px;
@@ -202,6 +201,66 @@
   
   .nav__icon {
     cursor: pointer;
+  }
+
+  /* Face Dropdown Menu */
+  #face-menu {
+    position: relative;
+    display: inline-block;
+
+    #face-icon {
+      cursor: pointer;
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      border: 2px solid $text-color;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $background-color;
+      transition: $global-transition;
+
+      &:hover {
+        background-color: lighten($background-color, 10%);
+      }
+    }
+
+    #dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: $white;
+      border: 1px solid $light-gray;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba($dark, 0.1);
+      list-style-type: none;
+      padding: 10px 0;
+      margin: 0;
+      z-index: 1000;
+
+      &.is-visible {
+        display: block;
+      }
+
+      li {
+        padding: 10px 20px;
+        white-space: nowrap;
+
+        &:hover {
+          background-color: $light-gray;
+        }
+
+        a {
+          text-decoration: none;
+          color: $dark;
+          &:hover {
+            color: $brand-color;
+          }
+        }
+      }
+    }
   }
 }
 
