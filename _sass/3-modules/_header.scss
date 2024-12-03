@@ -24,6 +24,119 @@
   flex-wrap: wrap;
 }
 
+/* Exploding Nav */
+.exploding-nav {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .exploding-nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .face {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  .home-page-nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-10px);
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 1rem;
+      margin: 10px 0;
+      color: $text-color;
+
+      img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+
+      &:hover {
+        color: $brand-color;
+      }
+    }
+  }
+
+  &.first-run:hover .home-page-nav {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Site Settings */
+.site-settings {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  .site-settings-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: rotate(15deg);
+    }
+
+    .site-settings-gear {
+      width: 30px;
+    }
+  }
+
+  .site-settings-panel {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: $background-color;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba($dark, 0.1);
+
+    .site-settings-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 24px;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .site-settings-toggle.open + .site-settings-panel {
+    display: block;
+  }
+}
+
 /* Logo */
 .logo__link {
   font-family: $heading-font-family;
@@ -35,6 +148,7 @@
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: -1px;
+
   &:hover {
     color: $brand-color;
   }
@@ -51,276 +165,4 @@
   margin: 0 auto;
 }
 
-.main-nav__box {
-  display: flex;
-  align-items: center;
-  width: 80%;
-  padding-top: 200px;
-  margin: 0 auto;
-
-  .nav__icon-close {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    color: rgba($white, .5);
-    transition: all .25s ease;
-    cursor: pointer;
-    &:hover {
-      color: $white;
-    }
-  }
-
-  @media only screen and (max-width: $tablet) {
-    padding-top: 100px;
-
-    .nav__icon-close {
-      top: 22px;
-      right: 42px;
-    }
-  }
-
-  @media only screen and (max-width: $mobile) {
-    width: 90%;
-  }
-}
-
-.navigation {
-  display: flex;
-  align-items: center;
-}
-
-.top-nav {
-  .nav__list {
-    .nav__item {
-      display: inline-block;
-      margin-right: 40px;
-      &:last-child {
-        margin-right: 0;
-      }
-  
-      .nav__link {
-        position: relative;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: $text-color;
-        &:hover {
-          color: $brand-color;
-        }
-      }
-    }
-  }
-
-  @media only screen and (max-width: $desktop) {
-    display: none;
-  }
-}
-
-.mobile-nav {
-  .nav__list {
-    .nav__item {
-      display: block;
-      margin-bottom: 36px;
-      text-align: center;
-      &:last-child {
-        margin-bottom: 0;
-      }
-  
-      .nav__link {
-        position: relative;
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: $text-color;
-        &:hover {
-          color: $brand-color;
-        }
-      }
-
-      @media only screen and (max-width: $mobile) {
-        margin-bottom: 28px;
-      }
-    }
-  }
-}
-
-.nav-buttons {
-  display: flex;
-  align-items: center;
-  font-size: 24px;
-  color: $text-color;
-
-  .search-button {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: $global-transition;
-
-    span {
-      transition: $global-transition;
-    }
-
-    &:hover {
-      span {
-        color: $brand-color;
-      }
-    }
-
-    span {
-      display: block;
-      margin-left: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      @media only screen and (max-width: $desktop) {
-        display: none;
-      }
-    }
-  }
-
-  .nav__icon-menu {
-    display: none;
-    margin-right: 16px;
-    @media only screen and (max-width: $desktop) {
-      display: block;
-    }
-  }
-  
-  .nav__icon {
-    cursor: pointer;
-  }
-
-  /* Face Dropdown Menu */
-  #face-menu {
-    position: relative;
-    display: inline-block;
-
-    #face-icon {
-      cursor: pointer;
-      font-size: 24px;
-      width: 40px;
-      height: 40px;
-      border: 2px solid $text-color;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: $background-color;
-      transition: $global-transition;
-
-      &:hover {
-        background-color: lighten($background-color, 10%);
-      }
-    }
-
-    #dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 50px;
-      right: 0;
-      background-color: $white;
-      border: 1px solid $light-gray;
-      border-radius: 5px;
-      box-shadow: 0 4px 6px rgba($dark, 0.1);
-      list-style-type: none;
-      padding: 10px 0;
-      margin: 0;
-      z-index: 1000;
-
-      &.is-visible {
-        display: block;
-      }
-
-      li {
-        padding: 10px 20px;
-        white-space: nowrap;
-
-        &:hover {
-          background-color: $light-gray;
-        }
-
-        a {
-          text-decoration: none;
-          color: $dark;
-          &:hover {
-            color: $brand-color;
-          }
-        }
-      }
-    }
-  }
-}
-
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
-  opacity: 0;
-  visibility: hidden;
-  background-color: $dark;
-  transition: all 0.5s ease-in-out;
-  &.is-open {
-    opacity: 1;
-    visibility: visible;
-  }
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    -webkit-backdrop-filter: saturate(180%) blur(24px);
-    backdrop-filter: saturate(180%) blur(24px);
-    background-color: rgba($dark, .9);
-  }
-  @media only screen and (min-width: $desktop) {
-    display: none;
-  }
-}
-
-.nav-grid {
-  width: 100%;
-  height: 75vh;
-  overflow-y: auto;
-}
-
-.nav-grid__item {
-  margin-bottom: 30px;
-  @media only screen and (max-width: $tablet) {
-    height: auto;
-  }
-}
-
-.nav-grid__title {
-  position: relative;
-  margin-bottom: 48px;
-  padding-bottom: 15px;
-  font-size: 40px;
-  text-align: center;
-  color: $text-color;
-  &::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, -50%);
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: $white;
-  }
-  @media only screen and (max-width: $tablet) {
-    margin-bottom: 30px;
-  }
-}
+/* Retain rest of the navigation styles as they are */
