@@ -7,7 +7,9 @@ $(document).ready(function() {
     searchOpenIcon = $(".search-button"),
     searchCloseIcon = $(".search__close"),
     searchInput = $(".search__text"),
-    searchBox = $(".search");
+    searchBox = $(".search"),
+    faceIcon = $("#face-icon"),
+    dropdownMenu = $("#dropdown-menu");
 
 
   /* =======================
@@ -29,6 +31,10 @@ $(document).ready(function() {
     searchClose();
   });
 
+  faceIcon.click(function () {
+    toggleFaceMenu();
+  });
+
   function menuOpen() {
     menuList.addClass("is-open");
   }
@@ -47,6 +53,16 @@ $(document).ready(function() {
   function searchClose() {
     searchBox.removeClass("is-visible");
   }
+
+  function toggleFaceMenu() {
+    dropdownMenu.toggleClass("is-visible");
+  }
+
+  $(document).click(function(event) {
+    if (!faceIcon.is(event.target) && !dropdownMenu.is(event.target) && dropdownMenu.has(event.target).length === 0) {
+      dropdownMenu.removeClass("is-visible");
+    }
+  });
 
   $('.search, .search__box').on('click keyup', function (event) {
     if (event.target == this || event.keyCode == 27) {
