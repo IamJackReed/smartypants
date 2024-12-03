@@ -1,7 +1,7 @@
 #-------------------------------
 # General Site Settings
-title: SmartyPants
-logo: # You can add own logo. For example '/images/logo.png'.
+title: # You can add own logo. For example '/images/logo.png'.
+logo: /images/logo.png
 description: Norlin – A Beautiful Dark Blog Theme for Jekyll.
 baseurl: "/smartypants" # The subpath of your site, e.g. /blog
 url: "https://iamjackreed.github.io" # The base hostname & protocol for your site, e.g. http://example.com
