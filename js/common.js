@@ -9,7 +9,11 @@ $(document).ready(function() {
     searchInput = $(".search__text"),
     searchBox = $(".search"),
     faceIcon = $("#face-icon"),
-    dropdownMenu = $("#dropdown-menu");
+    dropdownMenu = $("#dropdown-menu"),
+    explodingNavButton = $(".exploding-nav-button"),
+    homeNav = $(".home-page-nav"),
+    settingsToggle = $(".site-settings-toggle"),
+    settingsPanel = $(".site-settings-panel");
 
 
   /* =======================
@@ -17,11 +21,11 @@ $(document).ready(function() {
   ======================= */
   menuOpenIcon.click(function () {
     menuOpen();
-  })
+  });
 
   menuCloseIcon.click(function () {
     menuClose();
-  })
+  });
 
   searchOpenIcon.click(function () {
     searchOpen();
@@ -70,14 +74,38 @@ $(document).ready(function() {
     }
   });
 
+  /* =======================
+  // Exploding Navigation
+  ======================= */
+  explodingNavButton.click(function () {
+    homeNav.toggleClass("visible");
+  });
+
+  $(document).click(function(event) {
+    if (!explodingNavButton.is(event.target) && !homeNav.is(event.target) && homeNav.has(event.target).length === 0) {
+      homeNav.removeClass("visible");
+    }
+  });
+
+  /* =======================
+  // Site Settings Panel
+  ======================= */
+  settingsToggle.click(function () {
+    settingsPanel.toggleClass("open");
+  });
+
+  $(document).click(function(event) {
+    if (!settingsToggle.is(event.target) && !settingsPanel.is(event.target) && settingsPanel.has(event.target).length === 0) {
+      settingsPanel.removeClass("open");
+    }
+  });
 
   /* =======================
   // Animation Load Page
   ======================= */
   setTimeout(function(){
     $('body').addClass('is-in');
-  },150)
-
+  },150);
 
   // =====================
   // Simple Jekyll Search
@@ -90,14 +118,12 @@ $(document).ready(function() {
     noResultsText: '<li class="no-results"><h3>No results found</h3></li>'
   });
 
-
   /* =======================
   // LazyLoad Images
   ======================= */
   var lazyLoadInstance = new LazyLoad({
     elements_selector: '.lazy'
-  })
-
+  });
 
   // =====================
   // Ajax Load More
@@ -120,7 +146,7 @@ $(document).ready(function() {
 
       var lazyLoadInstance = new LazyLoad({
         elements_selector: '.lazy'
-      })
+      });
 
       $load_posts_button.text('Load more');
       pagination_next_page_number++;
@@ -131,7 +157,6 @@ $(document).ready(function() {
     });
   });
 
-
   /* =======================
   // Responsive Videos
   ======================= */
@@ -139,13 +164,11 @@ $(document).ready(function() {
     customSelector: ['iframe[src*="ted.com"]', 'iframe[src*="player.twitch.tv"]', 'iframe[src*="facebook.com"]']
   });
 
-
   /* =======================
   // Zoom Image
   ======================= */
   $(".page img, .post img").attr("data-action", "zoom");
   $(".page a img, .post a img").removeAttr("data-action", "zoom");
-
 
   /* =======================
   // Scroll Top Button
@@ -155,6 +178,7 @@ $(document).ready(function() {
       .stop()
       .animate({ scrollTop: 0 }, "slow", "swing");
   });
+
   $(window).scroll(function() {
     if ($(this).scrollTop() > $(window).height()) {
       $(".top").addClass("is-active");
