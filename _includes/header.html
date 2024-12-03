@@ -1,76 +1,49 @@
-{% if page.id %}
-  {% assign class = '' %}
-  {% elsif page.url contains 'tag' %}
-  {% assign class = '' %}
-  {% else %}
-  {% assign class = 'header--top' %}
-{% endif %}
+<header>
+  <!-- Home Link -->
+  <a href="{{ site.baseurl }}/" rel="home" class="home-link">{{ site.title }}</a>
 
-<!-- begin header -->
-<header class="header {{ class }}">
-  <div class="container">
-    <div class="row">
-      <div class="header__inner col col-12">
+  <!-- Main Navigation -->
+  <nav class="main-nav offset-right">
+    {% for link in site.nav_links %}
+      <a href="{{ link.url | prepend: site.baseurl }}">{{ link.title }}</a>
+    {% endfor %}
+  </nav>
 
-        <div class="logo">
-          <a class="logo__link" href="{{ site.baseurl }}/">
-          {% if site.logo %}
-            <img class="logo__image" src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}">
-          {% else %}
-            {{ site.title }}
-          {% endif %}
-          </a>
-        </div>
-        
-        <div class="menu-overlay">
-          <nav class="main-nav">
-            <div class="main-nav__box">
-              <div class="nav__icon-close">
-                <i class="ion ion-md-close"></i>
-              </div>
-              <div class="nav-grid">
-                <div class="nav-grid__item">
-                  <h2 class="nav-grid__title">Menu</h2>
-                  <div class="mobile-nav">
-                    {% include navigation.html %}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
+  <!-- Exploding Navigation -->
+  <div class="exploding-nav first-run" style="--navCount: 3">
+    <button class="exploding-nav-button">
+      <img class="face" src="{{ site.baseurl }}/images/jason-brains.png" alt="Jack's face">
+      <span class="sr-only">Show Navigation</span>
+    </button>
+    <nav class="home-page-nav">
+      <a class="home-item" href="{{ site.baseurl }}/#bio" style="--offset: 1">
+        About Jack
+        <img src="{{ site.baseurl }}/images/camera.png" alt="Camera Icon">
+      </a>
+      <a class="home-item" href="{{ site.baseurl }}/#teaching" style="--offset: 2">
+        Teaching
+        <img src="{{ site.baseurl }}/images/terminal.png" alt="Terminal Icon">
+      </a>
+      <a class="home-item" href="{{ site.baseurl }}/#newsletter" style="--offset: 3">
+        Newsletter
+        <img src="{{ site.baseurl }}/images/newsletter.png" alt="Newsletter Icon">
+      </a>
+    </nav>
+  </div>
 
-        <div class="navigation">
-          <div class="top-nav">
-            {% include navigation.html %}
-          </div>
-        </div>
-
-        <div class="nav-buttons">
-          <i class="nav__icon nav__icon-menu ion ion-md-menu"></i>
-          <div class="search-button">
-            <i class="nav__icon nav__icon-search ion ion-md-search"></i>
-            <span>Search</span>
-          </div>
-        </div>
-
-        <!-- New Face Dropdown Menu -->
-        <div id="face-menu" class="nav-buttons">
-          <div id="face-icon" onclick="toggleMenu()">
-            😊 <!-- Replace with an image or custom icon -->
-          </div>
-          <ul id="dropdown-menu">
-            <li><a href="#option1">Option 1</a></li>
-            <li><a href="#option2">Option 2</a></li>
-            <li><a href="#option3">Option 3</a></li>
-          </ul>
-        </div>
-        <!-- End of Face Dropdown Menu -->
-
-      </div>
+  <!-- Site Settings -->
+  <div class="site-settings">
+    <button class="site-settings-button site-settings-toggle" data-sound-hover="pop" data-sound-click="click">
+      <img class="site-settings-gear" src="{{ site.baseurl }}/images/gear.png" alt="Settings Gear">
+      <span class="sr-only">Show Settings</span>
+    </button>
+    <div class="site-settings-panel">
+      <button class="site-settings-button" data-sound-hover="pop" data-sound-click="click" data-setting="sound">
+        <img class="site-settings-sound" src="{{ site.baseurl }}/images/sound-on.png" alt="Sound On" 
+          data-image-on="{{ site.baseurl }}/images/sound-on.png" 
+          data-image-off="{{ site.baseurl }}/images/sound-off.png">
+        <span class="sr-only">Turn Sound Off</span>
+      </button>
     </div>
   </div>
 </header>
-<!-- end header -->
-
-{% include search.html %}
