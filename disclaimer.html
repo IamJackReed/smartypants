@@ -3,8 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Disclaimer</title>
+  <title>Disclaimer - Smarty Pants Investing</title>
   <link rel="stylesheet" href="styles/main.css"> <!-- Adjust if needed -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1e1e2f, #2c3e50);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .disclaimer-container {
+      max-width: 800px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .disclaimer-container h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #f39c12;
+    }
+
+    .disclaimer-container p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #ecf0f1;
+    }
+
+    .disclaimer-container ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .disclaimer-container ul li {
+      margin: 10px 0;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ecf0f1;
+    }
+
+    .disclaimer-container ul li:before {
+      content: "•";
+      color: #f39c12;
+      font-weight: bold;
+      display: inline-block;
+      width: 1rem;
+    }
+
+    .disclaimer-container button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2rem;
+      color: #ffffff;
+      background-color: #f39c12;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .disclaimer-container button:hover {
+      background-color: #d35400;
+    }
+
+    .disclaimer-container a {
+      text-decoration: none;
+      color: #f39c12;
+    }
+  </style>
   <script>
     // Check if the user has already accepted the disclaimer
     if (localStorage.getItem('disclaimerAccepted') === 'true') {
@@ -12,14 +90,36 @@
     }
   </script>
 </head>
-<body class="disclaimer">
+<body>
   <div class="disclaimer-container">
-    <h1>Disclaimer</h1>
+    <h1>Welcome to Smarty Pants Investing!</h1>
     <p>
-      By accessing this website, you agree to the terms outlined in the disclaimer.
+      Before you continue, please read and accept the following disclaimer. Click the “I Accept” button at the end to proceed.
     </p>
-    <button id="agreeButton">I Agree</button>
+    <p>
+      This site is for informational and entertainment purposes only. It provides a personal trading blog, sharing details of past trades, strategies, and lessons learned. <strong>This is not financial advice.</strong>
+    </p>
+
+    <h2>Key Points:</h2>
+    <ul>
+      <li><strong>Personal Trading Blog:</strong> The site reflects the author’s personal trades and strategies. Positions are disclosed after trades are made.</li>
+      <li><strong>No Financial Advice:</strong> The site does not provide specific buy, sell, or hold recommendations. Email queries asking for such advice cannot be answered.</li>
+      <li><strong>Independent Decisions:</strong> Past performance is no guarantee of future results. Trades shared on the site may no longer reflect current market conditions.</li>
+      <li><strong>Risk Awareness:</strong> Trading, particularly spread betting, carries significant risk. Only invest money you can afford to lose.</li>
+      <li><strong>Disclaimer of Liability:</strong> This site is for education and entertainment. You are responsible for your investment decisions.</li>
+    </ul>
+
+    <p>
+      By clicking “I Accept,” you acknowledge that:
+      <ul>
+        <li>You have read and understood this disclaimer.</li>
+        <li>You agree to enter at your own risk and will not hold the site or its author liable for any decisions you make.</li>
+      </ul>
+    </p>
+
+    <button id="agreeButton">I Accept</button>
   </div>
+
   <script>
     document.getElementById('agreeButton').addEventListener('click', function () {
       // Store acceptance in local storage
