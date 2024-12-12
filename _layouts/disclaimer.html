@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclaimer</title>
+  <link rel="stylesheet" href="styles/main.css"> <!-- Adjust if needed -->
+  <script>
+    // Check if the user has already accepted the disclaimer
+    if (localStorage.getItem('disclaimerAccepted') === 'true') {
+      window.location.href = "index.html"; // Redirect to the main page
+    }
+  </script>
+</head>
+<body class="disclaimer">
+  <div class="disclaimer-container">
+    <h1>Disclaimer</h1>
+    <p>
+      By accessing this website, you agree to the terms outlined in the disclaimer.
+    </p>
+    <button id="agreeButton">I Agree</button>
+  </div>
+  <script>
+    document.getElementById('agreeButton').addEventListener('click', function () {
+      // Store acceptance in local storage
+      localStorage.setItem('disclaimerAccepted', 'true');
+      // Redirect to the main site
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

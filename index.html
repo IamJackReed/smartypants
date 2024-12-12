@@ -2,6 +2,12 @@
 layout: default
 ---
 
+<script>
+  if (!localStorage.getItem('disclaimerAccepted')) {
+    window.location.href = "disclaimer.html";
+  }
+</script>
+
 <!-- begin hero -->
 {% if site.hero.image %}
 <section class="hero">
